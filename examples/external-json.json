@@ -1,0 +1,10 @@
+{
+  "port": 80,
+  "environment": "development",
+  "db": {
+    "host": "localhost",
+    "user": "root",
+    "password": ""
+  },
+  "pm2": true
+}
