@@ -7,7 +7,10 @@ process.env.ENVLIFT_APP_PORT = '8081';
 process.env.ENVLIFT_APP_ENVIRONMENT = 'production';
 process.env.ENVLIFT_APP_DB_USER = 'toor';
 process.env.ENVLIFT_APP_PM2 = 'false';
-process.env.ENVLIFT_APP_HOSTNAMES = 'localhost,127.0.0.1';
+process.env.ENVLIFT_APP_HOSTNAMES_0_HOST = 'localhost';
+process.env.ENVLIFT_APP_HOSTNAMES_0_PORT = '9191';
+process.env.ENVLIFT_APP_HOSTNAMES_1_HOST = 'newhost';
+process.env.ENVLIFT_APP_HOSTNAMES_1_PORT = '2222';
 
 /* global describe, it */
 describe('examples', function () {
@@ -25,6 +28,12 @@ describe('examples', function () {
     });
 
     it('simple-array', function () {
-        expect(require('../../examples/simple-array.js').hostnames).to.eql(['localhost', '127.0.0.1']);
+        expect(require('../../examples/simple-array.js').hostnames).to.eql([{
+            host: 'localhost',
+            port: 9191
+        }, {
+            host: 'newhost',
+            port: 2222
+        }]);
     });
 });

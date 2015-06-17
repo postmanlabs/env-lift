@@ -7,7 +7,10 @@ var config = require('../index').load('envlift-app', {
         user: 'root',
         password: ''
     },
-    hostnames: []  // Reference array that should be overridden by env-variables.
+    hostnames: [ // Reference array that should be overridden by env-variables.
+        {host: 'somehost', port: '8080'},
+        {host: 'someotherhost', port: '8080'}
+    ]
 });
 
 // export the config for testability
