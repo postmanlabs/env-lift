@@ -7,6 +7,7 @@ process.env.ENVLIFT_APP_PORT = '8081';
 process.env.ENVLIFT_APP_ENVIRONMENT = 'production';
 process.env.ENVLIFT_APP_DB_USER = 'toor';
 process.env.ENVLIFT_APP_PM2 = 'false';
+process.env.ENVLIFT_APP_HOSTNAMES = 'localhost,127.0.0.1';
 
 /* global describe, it */
 describe('examples', function () {
@@ -21,5 +22,9 @@ describe('examples', function () {
     it('external-json', function () {
         expect(require('../../examples/external-json.js').db.user).to.be('toor');
         expect(require('../../examples/external-json.js').pm2).to.be(false);
+    });
+
+    it('simple-array', function () {
+        expect(require('../../examples/simple-array.js').hostnames).to.eql(['localhost', '127.0.0.1']);
     });
 });
