@@ -18,9 +18,9 @@
   "author": "Postman Labs <help@getpostman.com>",
   "license": "Apache 2.0",
   "bugs": {
-    "url": "https://github.com/postmanlabs/sails-mysql-transactions/issues"
+    "url": "https://github.com/postmanlabs/env-lift/issues"
   },
-  "homepage": "https://github.com/postmanlabs/sails-mysql-transactions",
+  "homepage": "https://github.com/postmanlabs/env-lift",
   "dependencies": { },
   "devDependencies": {
     "expect.js": "^0.3.1",
