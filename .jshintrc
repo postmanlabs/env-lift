@@ -47,5 +47,10 @@
 
     "onevar": true,
 
-    "globals": { }
+    "globals": { 
+        "module": true,
+        "process": true,
+        "console": true,
+        "require": true
+    }
 }
