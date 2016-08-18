@@ -21,12 +21,12 @@
     "url": "https://github.com/postmanlabs/env-lift/issues"
   },
   "homepage": "https://github.com/postmanlabs/env-lift",
-  "dependencies": { },
+  "dependencies": {},
   "devDependencies": {
     "expect.js": "^0.3.1",
-    "jscs": "^1.11.3",
+    "jscs": "^3.0.7",
     "jshint": "^2.6.3",
-    "mocha": "^2.2.1"
+    "mocha": "^3.0.2"
   },
   "scripts": {
     "test": "scripts/test.sh"
