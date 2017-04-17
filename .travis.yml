@@ -3,6 +3,10 @@ language: node_js
 node_js:
   - '0.10'
 
+addons:
+  code_climate:
+    repo_token: d0049667a0a65b25a146ce1f2fe387ccc439ca1b391cd893831342141f711e50
+
 deploy:
   provider: npm
   email: help@getpostman.com
