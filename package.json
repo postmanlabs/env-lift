@@ -1,5 +1,8 @@
 {
   "name": "env-lift",
+  "engines": {
+    "node": ">=4.0.0"
+  },
   "version": "0.0.3",
   "description": "Simple namespaced environment variable configuration management solution",
   "main": "index.js",
