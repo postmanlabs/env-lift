@@ -21,7 +21,9 @@
     "url": "https://github.com/postmanlabs/env-lift/issues"
   },
   "homepage": "https://github.com/postmanlabs/env-lift",
-  "dependencies": {},
+  "dependencies": {
+    "snyk": "^1.316.1"
+  },
   "devDependencies": {
     "expect.js": "^0.3.1",
     "jscs": "^3.0.7",
@@ -29,6 +31,9 @@
     "mocha": "^3.0.2"
   },
   "scripts": {
-    "test": "scripts/test.sh"
-  }
+    "test": "scripts/test.sh",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
+  },
+  "snyk": true
 }
