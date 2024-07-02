@@ -78,8 +78,10 @@ module.exports = require('../index').load('envlift-app', {
     level: 'info'
   },
 
-  functionProperty: winston.createLogger({
+  circularProperty: winston.createLogger({
     format: winston.format.combine(winston.format.json()),
     transports: [new winston.transports.Console()]
-  })
+  }),
+
+  functionProperty: new Function()
 });
