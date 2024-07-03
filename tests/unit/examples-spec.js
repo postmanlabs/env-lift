@@ -12,10 +12,19 @@ process.env.ENVLIFT_APP_HOSTNAMES_0_PORT = '9191';
 process.env.ENVLIFT_APP_HOSTNAMES_1_HOST = 'newhost';
 process.env.ENVLIFT_APP_HOSTNAMES_1_PORT = '2222';
 
+
+process.env.ENVLIFT_APP_MYSQL_HOST='postman'
+process.env.ENVLIFT_APP_MYSQL_PASSWORD='securepwd'
+process.env.ENVLIFT_APP_MYSQL_PORT=4321
+
+process.env.ENVLIFT_APP_FUNCTIONPROPERTY='shouldnotoverride'
+
 /* global describe, it */
 describe('examples', function () {
     it('sails-local', function () {
         expect(require('../../examples/sails-local.js').port).to.be(8081);
+        expect(typeof require('../../examples/sails-local.js').circularProperty).to.equal('object');
+        expect(typeof require('../../examples/sails-local.js').functionProperty).to.equal('function');
     });
 
     it('simple-config', function () {
@@ -36,4 +45,10 @@ describe('examples', function () {
             port: 2222
         }]);
     });
+
+    it('same name sub-property as parent property', function () {
+        expect(require('../../examples/sails-local.js').mySQL.host).to.be('postman');
+        expect(require('../../examples/sails-local.js').mySQL.port).to.be(4321);
+    });
+
 });
