@@ -1,3 +1,5 @@
+winston = require('winston');
+
 /**
  * @fileOverview This is a variation of a SailsJS local.js file that uses env-lift to provide configuration overrides
  * from environment variables.
@@ -47,9 +49,19 @@ module.exports = require('../index').load('envlift-app', {
 
   environment: 'development',
 
+  mySQL: {
+    host: 'localhost',
+    password: 'password',
+    port: 1234,
+    adapter: 'sails-mysql',
+    database: 'test_database',
+    user: 'god'
+  },
+
   connections: {
     mySQL: {
       adapter: 'sails-mysql',
+      port: 2345,
       host: 'localhost',
       user: 'root',
       password: '',
@@ -64,5 +76,12 @@ module.exports = require('../index').load('envlift-app', {
 
   log: {
     level: 'info'
-  }
+  },
+
+  circularProperty: winston.createLogger({
+    format: winston.format.combine(winston.format.json()),
+    transports: [new winston.transports.Console()]
+  }),
+
+  functionProperty: new Function()
 });
