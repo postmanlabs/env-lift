@@ -1,0 +1,39 @@
+
+# This workflow takes care of Syncing local changes to Project Workspace (cloud)
+#
+# Current behavior (intermediate workaround):
+#   Both actions trigger on push to base branch, which happens when creating a new release.
+#
+name: Publish Changes to Postman Cloud
+
+on:
+  push:  # Temporary trigger; will be removed after migration to Argo
+    branches:
+      - main
+  workflow_dispatch:  # Will be used by Argo post-sync-hook to trigger this workflow
+permissions:
+  contents: read
+
+jobs:
+  publish-changes:
+    name: Publish Changes
+    # Private runner not required here, but using it for cost-effectiveness. Switch to GH runners if load increases.
+    runs-on: build9-arm-ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # Using canary CLI for consistency with E2E test workflow
+      - name: Install Postman CLI
+        run: curl -o- "https://dl-cli.pstmn.io/install/unix.sh" | sh
+
+      - name: Verify Postman CLI version
+        run: postman --version
+
+      - name: Login to Postman
+        env:
+          POSTMAN_API_KEY: ${{ secrets.POSTMAN_API_KEY }}
+        run: postman login --with-api-key "$POSTMAN_API_KEY"
+
+      - name: Publish changes to Cloud
+        run: postman workspace push -y --report-events
